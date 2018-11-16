@@ -1,0 +1,61 @@
+body{
+  background-color: black;
+}
+
+/*Class Styles */
+.titlebar{
+    background-color: #323736;
+    align-content: center;
+    height: 75px;
+}
+.main{
+  background-color: #747f72;
+}
+.sidebar{
+  background-color: #878787;
+  display: inline-block;
+  min-height: 400px;
+  min-width:200px;
+  padding: 10px;
+}
+.viewer-master{
+  float:right;
+  display: inline-block;
+  min-width: 400px;
+  min-height: 400px;
+}
+.footer{
+  background-color: #323736;
+  align-content: center;
+  height: 75px;
+}
+
+.flex-grid {
+  display: flex;
+}
+.flex-grid .col-1 {
+  flex: 1;
+}
+.flex-grid .col-4 {
+  flex: 4;
+}
+/*ID Styles */
+#viewer-top{
+
+}
+#viewer-bottom{
+
+}
+
+/*3d Viwer Styles */
+.inner {
+  margin:3px 0px 3px 0px;
+}
+
+#controls {
+  flex-direction:column;
+  background-color:none;
+  overflow:auto;
+  top: 0px;
+  padding: 10px;
+}

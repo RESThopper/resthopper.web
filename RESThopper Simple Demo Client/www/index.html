@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GH SERVE</title>
+    <meta name="description" content="aec tech 2018 hackathon project to run grasshopper remotely">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Lib Dependancy -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src="https://files.mcneel.com/rhino3dm/js/latest/OrbitControls.js"></script>
+    <script src="https://files.mcneel.com/rhino3dm/js/latest/compute.rhino3d.js"></script>
+    <script async type="text/javascript" src="https://files.mcneel.com/rhino3dm/js/latest/rhino3dm.js"></script>
+    <!-- local lib options -->
+    <!-- <script src=libs/compute.rhino3d.js"></script> -->
+    <!--<script src=libs/rhino3d.js"></script>-->
+    <!-- <script src=libs/three.js"></script> -->
+    <!--<script src=libs/OrbitControls.js"></script>-->
+  </head><!-- end of head -->
+  <script>
+    //Run all your global functions here
+    var onloadfunctions = function (){
+      fileupload("upload_files","upload_files_text");
+      rhino_logo_build();
+    }
+    //gloabal variabls
+    var loaded_ghx_master;
+    var retrunedgeometry;
+  </script>
+  <body onload="onloadfunctions()">
+      <div class ='titlebar'>
+        <h1> Grasshopper Serve : AECTech Hackathon</h1>
+      </div> <!-- end of titelbar-->
+      <!--------------------------->
+      <div class = 'main flex-grid'>
+        <div class = 'sidebar col-1'>
+          <h3>inputs</h3>
+          <br>
+          <button onclick="parse_ghx()" id=parse_button type="button">parce ghx</button>
+          <input type="file" id="upload_files" multiple size="50" onchange="myFunction()">
+          <p id="upload_files_text"></p>
+
+          <br>
+          <p>twistVal</p>
+          <input id="twistVal" type="range" min="1" max="100" value="50">
+          <p>heightVal</p>
+          <input id='heightVal' type="range" min="1" max="100" value="50">
+          <p>radiusXVal</p>
+          <input id='radiusXVal' type="range" min="1" max="100" value="50">
+          <p>radiusYVal</p>
+          <input id='radiusYVal' type="range" min="1" max="100" value="50">
+          <br>
+          <input type="text" value="http://10b16115.ngrok.io/grasshopper/" id="api_url_input"/>
+          <button onclick="gh_api_request_3()" id=submit_button type="button">Submit</button>
+        </div><!-- end of Sidebar-->
+        <!------------------------->
+        <div class = 'viewer-master col-4'>
+          <div id = 'viewer-top'>
+            <div id="controls">
+              <!--<button class="inner" onclick="getRhinoLogoMeshes()">Load Model</button>-->
+              <button class="inner" onclick="load_api_geom()">Load Model</button>
+              <!-- this is wher ethe api returned geom should be handeled (with on click)-->
+              <button class="inner" onclick="RhinoCompute.getAuthToken(false)">Set Authorization</button>
+              <div class="inner"><input type="checkbox" checked="true" onclick="RHINOLOGO.wireMaterial.visible = this.checked;">Wires</input></div>
+              <div class="inner"><input type="checkbox" checked="true" onclick="RHINOLOGO.meshMaterial.visible = this.checked;">Meshes</input></div>
+            </div>
+          </div><!--end of viewer-top-->
+          <div id = 'viewer-bottom'>
+
+            <div id="glcanvas">
+            </div>
+          </div><!--end of viewer-bottom-->
+        </div><!-- end of viewer-master -->
+
+      </div><!-- end of main -->
+      <!----------------------->
+      <div class = "footer">
+        <h3> Thanks for Looking</h3>
+        <p>-marc, chuck, nico, carl, emil, sergey, carl</p>
+      </div><!-- end of footer -->
+
+      <!-- Script Zone -->
+      <script src='js/three-viewport-setup.js'></script>
+      <script src='js/file-upload-helper.js'></script>
+      <script src='js/api-call-button.js'></script>
+      <script src='js/rhino-api-example.js'></script>
+      <script src='js/api-call-values_3.js'></script>
+      <script src='js/parse-local-ghx-file.js'></script>
+  </body>
+</html>
